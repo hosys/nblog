@@ -4,4 +4,6 @@ user.authenticate = function(name, password, callback){
 
 
 	// テスト書き込み。
+
+	
 };
