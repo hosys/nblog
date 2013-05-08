@@ -1,0 +1,25 @@
+
+# DB作成
+
+CREATE DATABASE nblogDB CHARACTER SET utf8;
+show databases;
+GRANT ALL on *.* to nblogUser IDENTIFIED BY 'nblogUser';
+FLUSH PRIVILEGES;
+SELECT User, Password FROM mysql.user;
+
+
+# table作成
+
+CREATE TABLE IF NOT EXISTS stories (
+	sid INT PRIMARY KEY AUTO_INCREMENT,
+	title TEXT,
+	slug TEXT NOT NULL,
+	body TEXT,
+	cdate DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users (
+	uid INT PRIMARY KEY AUTO_INCREMENT,
+	name TEXT NOT NULL,
+	password TEXT
+);
