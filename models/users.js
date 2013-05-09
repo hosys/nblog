@@ -25,14 +25,33 @@ users.authenticate = function(name, password, callback){
 		return;
 	}
 
+};
 
-	function _hashPassword(password){
-		if(password === ''){
-			return '';
-		}
-		var shasum = crypto.createHash('sha256');
-		shasum.update(password);
-		return shasum.digest('hex');
+
+function _hashPassword(password){
+	if(password === ''){
+		return '';
 	}
+	var shasum = crypto.createHash('sha256');
+	shasum.update(password);
+	return shasum.digest('hex');
+}
 
+
+
+
+// ユーザーを作成する
+users.createUser = function (name, password, callback) {
+  var hashedPassword = _hashPassword(password);
+  db.query(
+    'INSERT INTO users ' + '(uid,  name, password) ' + 'VALUES ' + '(NULL, ?,    ?)' + ';',
+    [name, hashedPassword],
+    function (err, results, fields) {
+      db.end();
+      var sid = results.insertId;
+      if (err) {
+        callback(new Error('Insert failed.'));
+      }
+      callback(null, sid);
+    });
 };
