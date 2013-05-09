@@ -1,5 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	.stories
+		each story in stories
+			include common/story
+	.pagenation
+		ul
+			if page.previous
+				li: a(href=page.previous) Prev
+			else
+				li.disabled: a Prev
+			if page.next
+				li: a(href=page.next) Next
+				li.disabled: a Next
+

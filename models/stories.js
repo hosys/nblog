@@ -1,3 +1,7 @@
+var database = require('./database');
+var db = database.createClient();
+var stories = exports;
+
 stories.getLatest = function(count, skip, callback){
 	if('function' === typeof skip){
 		callback = skip;

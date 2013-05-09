@@ -50,22 +50,23 @@ app.configure('development', function(){
 
 
 // login 
-app.get(('/login', routes.login));
-app.post(('/login', routes.login.post));
+app.get('/login', routes.login);
+app.post('/login', routes.login.post);
 
 // logout
-app.get(('/logout', routes.logout));
+app.get('/logout', routes.logout);
 
 // create article
-app.get(('/create', routes.create));
-app.post(('/create', routes.create.post));
+app.get('/create', routes.create);
+app.post('/create', routes.create.post);
 
 // View airticle
-app.get(('/:slug', routes.login));
+app.get('/:slug', routes.login);
 app.get('/', routes.index);
 
 
-app.get('/users', user.list);
+
+// app.get('/users', user.list);
 
 
 http.createServer(app).listen(app.get('port'), function(){

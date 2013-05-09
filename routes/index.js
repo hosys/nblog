@@ -110,7 +110,39 @@ exports.logout = function(req, res){
 
 
 
+//記事の作成
+exports.create = function(req, res) {
+  if (req.session.user === undefined) {
+    res.redirect(403, '/');
+    return;
+  }
+  res.render('create-story', {
+    story: {},
+    page: { title: 'New Story' },
+    user: req.session.user,
+    error: 200
+  });
+};
 
+// 記事の作成フォームを受け付ける
+exports.create.post = function(req, res) {
+  if (req.session.user === undefined) {
+    res.redirect(403, '/');
+    return;
+  }
+  var story = {};
+  story.title = req.body.title;
+  story.slug = req.body.slug;
+  story.body = req.body.body;
+
+  stories.insert(story, function (err) {
+    if (err) {
+      res.send(500);
+      return;
+    }
+    res.redirect('/');
+  });
+};
 
 
 

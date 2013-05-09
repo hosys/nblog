@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.container.login
+		.row
+			.span4.offset4
+				.dialog.login
+					.contents
+						form.well(method='post', action='login')
+							label USERNAME:
+							input(type='text', name='name', value=name)
+							label PASSWORD:
+							input(type='password', name='password')
+							.control-group
+								button.btn(type='submit', name='login') Login
+		if loginFailed
+			.row
+				.span4.offset4
+					.alert.alert-info
+						i.icon-exclaimation-sign
+						| login failed.
+

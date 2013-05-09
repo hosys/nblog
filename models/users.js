@@ -1,4 +1,10 @@
-user.authenticate = function(name, password, callback){
+
+var crypto = require('crypto');
+var database = require('./database');
+var db = database.createClient();
+var users = exports;
+
+users.authenticate = function(name, password, callback){
 	db.query('SELECT * FROM users WHERE name = ?',
 		[name], queryCallback);
 	function queryCallback(err, results, fields){
