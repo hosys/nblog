@@ -1,14 +1,14 @@
 {
 	"databaseAuth": {
-		"user": "nblogUser",
-		"database": "nblogDB",
-		"password": "nblogUser",
-		"host": "localhost",
-		"port": 3306
+	    "database": "nblogDB",
+	    "user": "root",
+	    "password": "root",
+	    "host": "localhost",
+	    "port": 8889
 	},
 	"sessionAuth": {
 		"host": "localhost",
 		"port": 11211
 	},
-	"cookiesHash": "doaojsoianc924u813ycqajwsmux9218i19wixedma"
+	"cookiesHash": "deajdmasmdaklmdl8789atcg"
 }

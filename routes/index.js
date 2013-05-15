@@ -14,6 +14,8 @@ exports.index = function(req, res){
 	var count = 10;
 	var skip = count * (pageNum - 1);
 
+	// res.render('index', { title: "express" });
+
 	stories.getLatest(count + 1, skip, function(err, items){
 		if(err){
 			res.send(500);
@@ -23,7 +25,7 @@ exports.index = function(req, res){
 		}
 
 		var nextPage = null;
-		if(item.length > count){
+		if(items.length > count){
 			nextPage = '/?page=' + (pageNum + 1);
 			items.pop();
 		}
@@ -43,7 +45,7 @@ exports.index = function(req, res){
 				next: nextPage,
 				previous: previousPage
 			},
-			user: req.sesssion.user || null,
+			user: req.session.user || null,
 			stories: items,
 			request: req
 		};

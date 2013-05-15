@@ -8,7 +8,7 @@ stories.getLatest = function(count, skip, callback){
 		skip = undefined;
 	}
 	skip = skip | 0;
-	db.query('SELECT * FROM stories ORDER BY cdata DESC LIMIT ?, ?;',
+	db.query('SELECT * FROM stories ORDER BY cdate DESC LIMIT ?, ?;',
 		[skip, count],
 		function(err, results, fields){
 			db.end();
