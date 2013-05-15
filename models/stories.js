@@ -32,12 +32,12 @@ stories.insert = function (story, callback) {
     story.body
   ];
   db.query(
-    'INSERT INTO stories '
-      + '(sid,  slug, title, body, cdate) '
-      + 'VALUES '
-      + '(NULL, ?,    ?,     ?,    NOW())'
-      + ';',
-    params, 
+    'INSERT INTO stories ' +
+     '(sid,  slug, title, body, cdate) '+
+     'VALUES ' +
+     '(NULL, ?,    ?,     ?,    NOW())' +
+     ';',
+    params,
     function (err, results, fields) {
       db.end();
       var sid = results.insertId;
@@ -47,7 +47,7 @@ stories.insert = function (story, callback) {
       }
       callback(null);
     });
-}
+};
 
 // sidを指定してデータベースから記事を取得する
 stories.getBySid = function (sid, callback) {
