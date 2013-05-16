@@ -18,6 +18,7 @@ var config = require('./config');
 
 var app = express();
 
+// env
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -38,15 +39,16 @@ app.configure(function(){
 });
 
 
-/**
- * Setup routing
- */
-
+// dev
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
 
+
+/**
+ * Setup routing
+ */
 
 // login 
 app.get('/login', routes.login);
@@ -60,12 +62,8 @@ app.get('/create', routes.create);
 app.post('/create', routes.create.post);
 
 // View airticle
-app.get('/:slug', routes.login);
+app.get('/:slug', routes.single);
 app.get('/', routes.index);
-
-
-
-// app.get('/users', user.list);
 
 
 http.createServer(app).listen(app.get('port'), function(){

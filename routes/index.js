@@ -147,7 +147,26 @@ exports.create.post = function(req, res) {
 };
 
 
-
+// artilce details
+exports.single = function (req, res){
+	stories.getBySlug(req.params.slug, function(err, item) {
+		if(err){
+			res.send(500);
+			console.log('cannot retrieve stories');
+			console.log(err);
+			return;
+		}
+		if(item === null){
+			res.send(404);
+			return;
+		}
+		res.render('single', {
+			page: { title: 'nblog-RE' },
+			user: req.session.user || null,
+			story: item
+		});
+	});
+};
 
 
 
