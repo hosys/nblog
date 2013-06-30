@@ -1,10 +1,10 @@
 {
 	"databaseAuth": {
-	    "database": "nblogDB",
-	    "user": "root",
-	    "password": "root",
-	    "host": "localhost",
-	    "port": 8889
+		"database": "nblogDB",
+		"user"    : "root",
+		"password": "root",
+		"host"    : "localhost",
+		"port"    : 8889
 	},
 	"sessionAuth": {
 		"host": "localhost",

@@ -3,20 +3,19 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var http = require('http');
-var path = require('path');
+var express        = require('express');
+var routes         = require('./routes');
+var http           = require('http');
+var path           = require('path');
 
 var MemcachedStore = require('connect-memcached')(express);
-var config = require('./config');
-
+var config         = require('./config');
 
 /**
  * Setup app object
  */
 
-var app = express();
+var app            = express();
 
 // env
 app.configure(function(){
